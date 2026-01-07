@@ -45,19 +45,33 @@
 Проект построен по **модульному принципу**:
 
 camera / image / video
+
 │
+
 ▼
+
 PersonDetector (YOLOv8)
+
 │
+
 ▼
+
 PoseEstimator (MediaPipe Pose)
+
 │
+
 ├── EmotionRecognizer (ONNX FER+)
+
 │
+
 └── IntentPredictor (кинематика + логика)
+
 │
+
 ▼
+
 UI / Video / Telegram Bot
+
 
 ---
 
