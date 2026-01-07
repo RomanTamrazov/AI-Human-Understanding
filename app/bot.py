@@ -14,7 +14,7 @@ from telegram.ext import (
 
 from process_media import process_image, process_video
 
-TOKEN = "8560641555:AAEuGdJlgGhBeJcrZvgKGnSVGIayi31Vw4Y"
+TOKEN = ""
 
 DOWNLOAD_DIR = "bot_data"
 os.makedirs(DOWNLOAD_DIR, exist_ok=True)
