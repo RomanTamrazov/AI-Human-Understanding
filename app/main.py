@@ -105,15 +105,20 @@ while True:
             frame,
             f"намерение: {intent} ({int(intent_prob * 100)}%)",
             (x1, max(30, y1 - 45)),
-            26
+            30
         )
+
+        # ==================== ЭМОЦИЯ (ПРАВЫЙ ВЕРХ БОКСА) ====================
+        emotion_x = max(5, x2 - 150)   # 220px — безопасная ширина под текст
+        emotion_y = max(5, y1 - 30 )
 
         frame = draw_text(
             frame,
             emotion_text,
-            (x1, min(h_frame - 10, y2 + 30)),
-            26
+            (emotion_x, emotion_y),
+            28
         )
+
 
     cv2.imshow(WINDOW_NAME, frame)
 
