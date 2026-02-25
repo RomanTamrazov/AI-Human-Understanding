@@ -19,7 +19,6 @@ TOKEN = ""
 DOWNLOAD_DIR = "bot_data"
 os.makedirs(DOWNLOAD_DIR, exist_ok=True)
 
-# ---------- КНОПКИ ----------
 MAIN_KEYBOARD = ReplyKeyboardMarkup(
     [
         [KeyboardButton("📷 Обработать изображение")],
@@ -30,10 +29,8 @@ MAIN_KEYBOARD = ReplyKeyboardMarkup(
     resize_keyboard=True
 )
 
-# ---------- СОСТОЯНИЕ ----------
 USER_STATE = {}
 
-# ---------- /start ----------
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     USER_STATE[update.effective_user.id] = None
     await update.message.reply_text(
@@ -43,7 +40,6 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         reply_markup=MAIN_KEYBOARD
     )
 
-# ---------- /help ----------
 async def help_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
         "🆘 Помощь\n\n"
@@ -56,7 +52,6 @@ async def help_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "❌ Отмена — доступна всегда"
     )
 
-# ---------- ТЕКСТ ----------
 async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = update.message.text
     uid = update.effective_user.id
@@ -88,7 +83,6 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
     else:
         await update.message.reply_text("❓ Используй кнопки или /help")
 
-# ---------- ФОТО ----------
 async def handle_photo(update: Update, context: ContextTypes.DEFAULT_TYPE):
     uid = update.effective_user.id
     if USER_STATE.get(uid) != "image":
@@ -114,7 +108,6 @@ async def handle_photo(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     USER_STATE[uid] = None
 
-# ---------- ВИДЕО ----------
 async def handle_video(update: Update, context: ContextTypes.DEFAULT_TYPE):
     uid = update.effective_user.id
     if USER_STATE.get(uid) != "video":
@@ -140,7 +133,6 @@ async def handle_video(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     USER_STATE[uid] = None
 
-# ---------- MAIN ----------
 def main():
     app = ApplicationBuilder().token(TOKEN).build()
 
